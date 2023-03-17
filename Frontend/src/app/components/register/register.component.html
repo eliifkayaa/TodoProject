@@ -1,0 +1,49 @@
+<div class="vh-100 gradient-custom-2">
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                    class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style="margin-top: 100px;">
+                <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start" >
+                        <p class="lead fw-normal mb-0 me-3" style="font-size: 30px; color:crimson;">
+                            Sign Up</p>
+                    </div>
+
+                     <!-- name-lastname input -->
+                     <div class="form-outline mb-4" style="margin-top: 20px;">
+                        <label for="userName">Name - Last Name</label>
+                        <input type="text" id="name" class="form-control form-control-lg" ngModel required
+                            minlength="3" name="name" placeholder="Enter a valid Name-Lastname" />
+                    </div>
+
+                    <!-- userName input -->
+                    <div class="form-outline mb-4" style="margin-top: 20px;">
+                        <label  for="userName">Username</label>
+                        <input type="text" id="userName" class="form-control form-control-lg" ngModel required
+                            minlength="3" name="userName" placeholder="Enter a valid Username" />
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-3">
+                        <label for="password">Password</label>
+                        <input ngModel required minlength="3" name="password" type="password" id="password"
+                            class="form-control form-control-lg" placeholder="Enter password" />
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button 
+                        class="btn btn-danger btn-lg"
+                        [disabled]="!registerForm.valid"
+                        >Register</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? 
+                        <a routerLink="/login"class="link-danger">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="vh-100 gradient-custom-2">
+  <div class="container py-5 h-100">
+        <button class="btn btn-success" (click)="getAll()">Refresh</button>
+    <div class="logout">
+        <button class="btn btn btn-danger" (click)="logout()">Log Out</button>
+      </div>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-12 col-xl-10">
+       
+        <div class="card mask-custom">
+          <div class="card-body p-4 text-white">
+            <div class="text-center pt-3 pb-2">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
+                alt="Check" width="60">
+              <h2 class="my-4">Task List</h2>
+            </div>
+
+            <div class="container d-flex justify-content-center">
+                <div class="col-md-12 mt-4">
+                  <form #form="ngForm" (ngSubmit)="add(form)">
+                    <div class="form-group">
+                      <label for="team">Team Member</label>
+                      <input type="text" class="form-control" required minlength="3" ngModel name="team" id="team" placeholder="Team Member...">
+                    </div>
+                    <div class="form-group">
+                      <label for="name">Task</label>
+                      <input type="text" class="form-control" required minlength="3" ngModel name="name" id="name" placeholder="Task...">
+                    </div>
+                    <div class="form-group mt-2">
+                      
+                      <button class="btn btn-danger">Save</button>
+                    </div>
+                  </form>
+                  <hr>
+                  
+            <table class="table text-white mb-0">
+              <thead>
+                <tr>
+                  <th>Team Member</th>
+                  <th>Task</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <tr *ngFor="let todo of todos let index = index">
+                    <td>{{todo.team}}</td>
+                    <td>{{todo.name}}</td>
+                    <td>
+                        <span [class]="changeClassByStatus(todo.isCompleted)">
+                          {{todo.isCompleted ? "Yapıldı" : "Yapılmadı"}}
+                        </span>
+                      </td>
+                  <td>{{todo.date | date: 'dd.MM.yyyy HH:mm:ss'}}</td>
+                  <td>
+                    <button class="btn btn-outline-info btn-sm" style="color: white;" (click)="updateById(todo._id)">
+                        <i class="fa fa-check"></i></button>
+                    <button class="btn btn-outline-danger btn-sm mx-1" style="color: white;" (click)="removeById(todo._id)">
+                        <i class="fa fa-trash"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
